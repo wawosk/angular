@@ -1,0 +1,14 @@
+<div class="random-container">
+  <div class="info">
+    <p>Zakres losowania: od 1 do {{ maxValue }}</p>
+    <p class="status" [style.color]="getColor()">{{ getStatusText() }}</p>
+  </div>
+
+  <button (click)="generateRandom()" class="generate-btn">
+    Losuj nową liczbę
+  </button>
+
+  <div class="random-value">
+    <h3 [style.color]="getColor()">{{ currentRandom }}</h3>
+  </div>
+</div>

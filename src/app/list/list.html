@@ -1,0 +1,30 @@
+<div class="list-container">
+  <div class="add-form">
+    <input
+      type="text"
+      [(ngModel)]="newItem"
+      (keyup.enter)="onKeyPress($event)"
+      placeholder="Wpisz nowy element..."
+      class="item-input"
+    >
+    <button (click)="addItem()" class="add-btn">
+      Dodaj
+    </button>
+  </div>
+
+  <div class="items-list" *ngIf="items.length > 0">
+    <h3>Lista elementów ({{ items.length }})</h3>
+    <ul>
+      <li *ngFor="let item of items; let i = index">
+        <span class="item-text">{{ i + 1 }}. {{ item }}</span>
+        <button (click)="removeItem(i)" class="remove-btn">
+          Usuń
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div *ngIf="items.length === 0" class="empty-list">
+    Lista jest pusta
+  </div>
+</div>
