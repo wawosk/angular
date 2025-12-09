@@ -1,0 +1,31 @@
+<!-- src/app/list/list.html -->
+<section class="list-wrap">
+  <div class="list-controls">
+    <button (click)="goAdd()">Dodaj nową osobę</button>
+  </div>
+
+  <div *ngIf="people.length === 0" class="empty">
+    Brak zapisanych osób. Dodaj pierwszą osobę.
+  </div>
+
+  @if (people.length > 0) {
+    <ul class="people-list">
+      @for (p of people; track p; let i = $index) {
+        <li class="person-item">
+          <div class="person-main">
+            <strong>{{ p.firstName || '—' }} {{ p.familyName || '—' }}</strong>
+            <span class="age">({{ p.age || '—' }} lat)</span>
+            <div class="address">
+              {{ p.address.city || '—' }}, {{ p.address.street || '—' }}, {{ p.address.postCode || '—' }}
+            </div>
+          </div>
+
+          <div class="person-actions">
+            <button (click)="viewDetails(i)">Szczegóły</button>
+            <button (click)="delete(i)">Usuń</button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</section>

@@ -1,0 +1,45 @@
+<!-- src/app/add-person/add-person.html -->
+<section class="add-wrap">
+  <h2>Dodaj nową osobę</h2>
+
+  <form (ngSubmit)="save()">
+    <div class="row">
+      <label>
+        Imię:
+        <input name="firstName" [(ngModel)]="person.firstName" />
+      </label>
+      <label>
+        Nazwisko:
+        <input name="familyName" [(ngModel)]="person.familyName" />
+      </label>
+    </div>
+
+    <div class="row">
+      <label>
+        Wiek:
+        <input name="age" type="number" [(ngModel)]="person.age" />
+      </label>
+    </div>
+
+    <fieldset>
+      <legend>Adres</legend>
+      <label>
+        Miasto:
+        <input name="city" [(ngModel)]="person.address.city" />
+      </label>
+      <label>
+        Ulica:
+        <input name="street" [(ngModel)]="person.address.street" />
+      </label>
+      <label>
+        Kod pocztowy:
+        <input name="postCode" [(ngModel)]="person.address.postCode" />
+      </label>
+    </fieldset>
+
+    <div class="form-actions">
+      <button type="submit">Zapisz</button>
+      <button type="button" (click)="cancel()">Anuluj</button>
+    </div>
+  </form>
+</section>

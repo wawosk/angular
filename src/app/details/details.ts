@@ -1,0 +1,39 @@
+// src/app/details/details.ts
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { PersonService } from '../services/person.service';
+import { Person } from '../models/person';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-details',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './details.html',
+  styleUrls: ['./details.css']
+})
+export class Details implements OnInit, OnDestroy {
+  person: Person | null = null;
+  paramSub?: Subscription;
+  idIndex: number | null = null;
+
+  constructor(private route: ActivatedRoute, private personService: PersonService) {}
+
+  ngOnInit(): void {
+    // subskrybujemy zmiany parametrów ścieżki
+    this.paramSub = this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.idIndex = id !== null ? parseInt(id, 10) : null;
+      if (this.idIndex === null || isNaN(this.idIndex)) {
+        this.person = null;
+      } else {
+        this.person = this.personService.get(this.idIndex);
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.paramSub?.unsubscribe();
+  }
+}
