@@ -1,0 +1,25 @@
+<!-- src/app/details/details.html -->
+<section class="details-wrap">
+  @if (isLoading) {
+    <div class="loading">Ładowanie danych osoby...</div>
+  }
+
+  @if (errorMessage) {
+    <div class="error-message">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (person && !isLoading) {
+    <h2>Szczegóły osoby (ID: {{ person.id }})</h2>
+    <p><strong>Imię:</strong> {{ person.firstName || '—' }}</p>
+    <p><strong>Nazwisko:</strong> {{ person.familyName || '—' }}</p>
+    <p><strong>Wiek:</strong> {{ person.age ?? '—' }}</p>
+    <h3>Adres</h3>
+    <p><strong>Miasto:</strong> {{ person.address?.city || '—' }}</p>
+    <p><strong>Ulica:</strong> {{ person.address?.street || '—' }}</p>
+    <p><strong>Kod pocztowy:</strong> {{ person.address?.postCode || '—' }}</p>
+  } @else if (!isLoading && !errorMessage) {
+    <div>Nie wybrano osoby do wyświetlenia.</div>
+  }
+</section>

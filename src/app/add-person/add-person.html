@@ -1,0 +1,56 @@
+<!-- src/app/add-person/add-person.html -->
+<section class="add-wrap">
+  <h2>Dodaj nową osobę</h2>
+
+  <!-- Komunikat o błędzie -->
+  @if (errorMessage) {
+    <div class="error-message">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (isLoading) {
+    <div class="loading">Trwa zapisywanie...</div>
+  }
+
+  <form (ngSubmit)="save()" [class.disabled]="isLoading">
+    <div class="row">
+      <label>
+        Imię:
+        <input name="firstName" [(ngModel)]="person.firstName" [disabled]="isLoading" />
+      </label>
+      <label>
+        Nazwisko:
+        <input name="familyName" [(ngModel)]="person.familyName" [disabled]="isLoading" />
+      </label>
+    </div>
+
+    <div class="row">
+      <label>
+        Wiek (0-110):
+        <input name="age" type="number" min="0" max="110" [(ngModel)]="person.age" [disabled]="isLoading" />
+      </label>
+    </div>
+
+    <fieldset>
+      <legend>Adres</legend>
+      <label>
+        Miasto:
+        <input name="city" [(ngModel)]="person.address.city" [disabled]="isLoading" />
+      </label>
+      <label>
+        Ulica:
+        <input name="street" [(ngModel)]="person.address.street" [disabled]="isLoading" />
+      </label>
+      <label>
+        Kod pocztowy:
+        <input name="postCode" [(ngModel)]="person.address.postCode" [disabled]="isLoading" />
+      </label>
+    </fieldset>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="isLoading">Zapisz</button>
+      <button type="button" (click)="cancel()" [disabled]="isLoading">Anuluj</button>
+    </div>
+  </form>
+</section>
