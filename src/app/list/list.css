@@ -1,0 +1,9 @@
+/* src/app/list/list.css */
+.list-wrap { max-width: 800px; margin: 0 auto; }
+.list-controls { margin-bottom: 12px; }
+.people-list { list-style: none; padding: 0; margin: 0; }
+.person-item { display: flex; justify-content: space-between; align-items: center; padding: 8px; border-bottom: 1px solid #eee; }
+.person-main { max-width: 70%; }
+.person-actions button { margin-left: 8px; }
+.empty { color: #666; padding: 12px 0; }
+.address { font-size: 0.9em; color: #555; }

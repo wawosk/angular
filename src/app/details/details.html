@@ -1,0 +1,79 @@
+<!-- src/app/details/details.html -->
+<section class="details-wrap mat-card">
+  <div *ngIf="person">
+    <h2 class="mat-headline-5">Szczegóły osoby</h2>
+
+    <div class="detail-grid">
+      <div class="detail-item mat-elevation-z1">
+        <mat-icon class="detail-icon">person</mat-icon>
+        <div class="detail-content">
+          <span class="label mat-body-2">Imię:</span>
+          <span class="value mat-body-1">{{ person.firstName || '—' }}</span>
+        </div>
+      </div>
+
+      <div class="detail-item mat-elevation-z1">
+        <mat-icon class="detail-icon">badge</mat-icon>
+        <div class="detail-content">
+          <span class="label mat-body-2">Nazwisko:</span>
+          <span class="value mat-body-1">{{ person.familyName || '—' }}</span>
+        </div>
+      </div>
+
+      <div class="detail-item mat-elevation-z1">
+        <mat-icon class="detail-icon">cake</mat-icon>
+        <div class="detail-content">
+          <span class="label mat-body-2">Wiek:</span>
+          <span class="value mat-body-1">{{ person.age ?? '—' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h3 class="mat-headline-6">Adres</h3>
+
+    <div class="detail-grid">
+      <div class="detail-item mat-elevation-z1">
+        <mat-icon class="detail-icon">location_city</mat-icon>
+        <div class="detail-content">
+          <span class="label mat-body-2">Miasto:</span>
+          <span class="value mat-body-1">{{ person.address.city || '—' }}</span>
+        </div>
+      </div>
+
+      <div class="detail-item mat-elevation-z1">
+        <mat-icon class="detail-icon">home</mat-icon>
+        <div class="detail-content">
+          <span class="label mat-body-2">Ulica:</span>
+          <span class="value mat-body-1">{{ person.address.street || '—' }}</span>
+        </div>
+      </div>
+
+      <div class="detail-item mat-elevation-z1">
+        <mat-icon class="detail-icon">local_post_office</mat-icon>
+        <div class="detail-content">
+          <span class="label mat-body-2">Kod pocztowy:</span>
+          <span class="value mat-body-1">{{ person.address.postCode || '—' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" routerLink="/">
+        <mat-icon>arrow_back</mat-icon>
+        Wróć do listy
+      </button>
+    </div>
+  </div>
+
+  <div *ngIf="!person" class="empty-state">
+    <mat-icon class="error-icon">error_outline</mat-icon>
+    <h3 class="mat-headline-6">Nie znaleziono osoby</h3>
+    <p class="mat-body-1">Sprawdź listę i spróbuj ponownie.</p>
+    <button mat-raised-button color="primary" routerLink="/">
+      <mat-icon>arrow_back</mat-icon>
+      Wróć do listy
+    </button>
+  </div>
+</section>

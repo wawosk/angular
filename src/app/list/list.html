@@ -1,0 +1,57 @@
+<!-- src/app/list/list.html -->
+<section class="list-wrap mat-card">
+  <div class="list-header">
+    <h2 class="mat-headline-5">Lista osób</h2>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="goAdd()">
+      <mat-icon>add</mat-icon> Dodaj nową osobę
+    </button>
+  </div>
+
+  <div *ngIf="people.length === 0" class="empty-state">
+    <mat-icon>info</mat-icon>
+    <p class="mat-body-1"> Brak zapisanych osób.</p>
+    <p class="mat-body-1">Kliknij przycisk powyżej, aby dodać pierwszą osobę.</p>
+  </div>
+
+  @if (people.length > 0) {
+    <div class="people-list">
+      @for (p of people; track p; let i = $index) {
+        <mat-card class="person-card mat-elevation-z2">
+          <mat-card-header>
+            <mat-card-title class="mat-headline-6">
+              {{ p.firstName || '—' }} {{ p.familyName || '—' }}
+            </mat-card-title>
+            <mat-card-subtitle>
+              <span class="age mat-caption">{{ p.age || '—' }} lat</span>
+            </mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content>
+            <p class="address mat-body-2">
+              <mat-icon class="address-icon">location_on</mat-icon>
+              {{ p.address.city || '—' }}, {{ p.address.street || '—' }}, {{ p.address.postCode || '—' }}
+            </p>
+          </mat-card-content>
+
+          <mat-card-actions align="end">
+            <button
+              mat-button
+              color="primary"
+              (click)="viewDetails(i)">
+              <mat-icon>visibility</mat-icon> Szczegóły
+            </button>
+            <button
+              mat-button
+              color="warn"
+              (click)="delete(i)">
+              <mat-icon>delete</mat-icon> Usuń
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      }
+    </div>
+  }
+</section>

@@ -1,0 +1,8 @@
+/* src/styles.css - global */
+body { margin: 0; padding: 0 16px; font-family: Arial, sans-serif; background: #fafafa; color: #222; }
+button { cursor: pointer; padding: 6px 10px; }
+input { padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; }
+a { color: #0b63c4; }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

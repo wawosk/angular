@@ -1,0 +1,59 @@
+<!-- src/app/add-person/add-person.html -->
+<section class="add-wrap mat-card">
+  <h2 class="mat-headline-5"> Dodaj nową osobę</h2>
+
+  <form (ngSubmit)="save()" class="add-form">
+    <div class="form-section">
+      <h3 class="mat-subtitle-1">Dane osobowe</h3>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Imię</mat-label>
+          <input matInput name="firstName" [(ngModel)]="person.firstName" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Nazwisko</mat-label>
+          <input matInput name="familyName" [(ngModel)]="person.familyName" />
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Wiek</mat-label>
+          <input matInput type="number" name="age" [(ngModel)]="person.age" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="form-section">
+      <h3 class="mat-subtitle-1">Adres</h3>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Miasto</mat-label>
+          <input matInput name="city" [(ngModel)]="person.address.city" />
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Ulica</mat-label>
+          <input matInput name="street" [(ngModel)]="person.address.street" />
+        </mat-form-field>
+      </div>
+      <div class="form-row">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Kod pocztowy</mat-label>
+          <input matInput name="postCode" [(ngModel)]="person.address.postCode" />
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">
+        Zapisz
+      </button>
+      <button mat-button type="button" (click)="cancel()">
+        Anuluj
+      </button>
+    </div>
+  </form>
+</section>
